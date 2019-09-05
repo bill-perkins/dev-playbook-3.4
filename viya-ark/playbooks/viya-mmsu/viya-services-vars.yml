@@ -1,0 +1,15 @@
+####################################################################
+#### viya-services-vars.yml                                     ####
+####################################################################
+#### Author: SAS Institute Inc.                                 ####
+####################################################################
+---
+svs_label: 3.4.20190705
+#########################################
+# Variables used in playbooks
+#########################################
+svas_retry_count: 2
+svas_delay_timer: 2                   #seconds
+enable_stray_cleanup: false           #stray processes cleanup
+log_diskspace_minimum: 2097152000     #2GB
+
