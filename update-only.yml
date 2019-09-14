@@ -1,6 +1,6 @@
 ---
 # file: update-only.yml
-- hosts: sas-all
+- hosts: sas_all
   any_errors_fatal: true
   tasks:
   - set_fact:
