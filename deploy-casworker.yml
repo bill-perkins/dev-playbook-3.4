@@ -1,6 +1,6 @@
 ---
 # file: deploy-casworker.yml
-- hosts: sas-all
+- hosts: sas_all
   any_errors_fatal: true
   tasks:
   - set_fact:
@@ -37,7 +37,7 @@
 - include: "{{ 'internal/validate-java.yml' }}"
 
 # Install on Worker hosts
-- include: internal/install-packages.yml install_hosts=sas-casserver-worker
+- include: internal/install-packages.yml install_hosts=sas_casserver_worker
 
 # Write the consul.conf on all hosts
 - include: "{{ 'internal/envesntl.yml' }}"
@@ -65,7 +65,7 @@
 #################
 # Make sure ssh is configured across all hosts in the grid
 - name: "Configure Users"
-  hosts: sas-casserver*
+  hosts: sas_casserver*
   any_errors_fatal: true
   become: false
 
@@ -78,8 +78,8 @@
         name: "{{ item }}"
         group: cas_hosts
       with_items:
-        - "{{ groups['sas-casserver-primary'] }}"
-        - "{{ groups['sas-casserver-worker'] }}"
+        - "{{ groups['sas_casserver_primary'] }}"
+        - "{{ groups['sas_casserver_worker'] }}"
       changed_when: no
 
   roles:
@@ -90,7 +90,7 @@
 #################
 # Configure on new Worker hosts
 - name: "Configure CAS"
-  hosts: "sas-casserver-worker"
+  hosts: "sas_casserver_worker"
   any_errors_fatal: true
   become: false
 
@@ -102,7 +102,7 @@
     cas_user: "{{ casenv_user | default('cas') }}"
     cas_group: "{{ casenv_group | default('sas') }}"
     # Used to validate the mode against the number of hosts
-    num_cas_hosts: "{{ groups['sas-casserver-worker'] | length }}"
+    num_cas_hosts: "{{ groups['sas_casserver_worker'] | length }}"
     # Using this to get around anisble issue https://github.com/ansible/ansible/issues/14228
     os_family: "{{ ansible_os_family | default('unknown_by_sas') }}"
 
