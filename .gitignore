@@ -1,14 +1,1 @@
-backups
-viya-gel-training-materials-master.zip
-snapshot
-deployment.log*
-*gz
-checks
-snapshot
-archive
-*.hld
-*.html
-*.swp
-viya_deployment_report_*.yml
-viya-ark-Viya34-ark-1.7
-
+*.2019*
