@@ -1,4 +1,4 @@
-- hosts: sas-all
+- hosts: sas_all
   any_errors_fatal: true
   tasks:
   - set_fact:
@@ -7,7 +7,7 @@
 - include: "internal/gather-host-facts.yml"
 
 - name: Stop all services
-  hosts: sas-all
+  hosts: sas_all
   any_errors_fatal: true
   vars_files:
   - vars.yml
