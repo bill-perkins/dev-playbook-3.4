@@ -1,7 +1,7 @@
 ---
 # system assessment playbook
 
-- hosts: sas-all
+- hosts: sas_all
   tasks:
   - set_fact:
       orchestration_root: '{{ playbook_dir }}'
