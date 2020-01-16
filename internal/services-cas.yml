@@ -25,11 +25,11 @@
         - "{{ orchestration_root }}/soe.yml"
         - "{{ orchestration_root }}/internal/soe_defaults.yml"
 
-    - name: Set mode to mpp if hosts are defined for the sas-casserver-worker group
+    - name: Set mode to mpp if hosts are defined for the sas_casserver_worker group
       set_fact:
         cas_mode: mpp
       when:
-        - "groups['sas-casserver-worker'] | length > 0"
+        - "groups['sas_casserver_worker'] | length > 0"
 
     - name: Set mode to the user-defined value
       set_fact:
@@ -42,30 +42,30 @@
     - foundation_service_action: "{{ service_action }}"
       foundation_service_enabled: no
       foundation_service_name: "{{ cas_controller_service }}"
-      foundation_service_group: sas-casserver-primary
+      foundation_service_group: sas_casserver_primary
       role: foundation-service
       when: "cas_mode == 'mpp'"
     - foundation_service_action: "{{ service_action }}"
       foundation_service_enabled: yes
       foundation_service_name: "{{ cas_controller_service }}"
-      foundation_service_group: sas-casserver-primary
+      foundation_service_group: sas_casserver_primary
       role: foundation-service
       when: "cas_mode == 'smp'"
     # - foundation_service_action: "{{ service_action }}"
       # foundation_service_enabled: yes
       # foundation_service_name: "{{ cas_worker_service }}"
-      # foundation_service_group: sas-casserver-worker
+      # foundation_service_group: sas_casserver_worker
       # role: foundation-service
     - foundation_service_action: "{{ service_action }}"
       foundation_service_name: "sas-{{ DEPLOYMENT_ID }}-consul-{{ INSTANCE_ID }}"
-      foundation_service_group: sas-casserver-worker
+      foundation_service_group: sas_casserver_worker
       role: foundation-service
       when:
         - sas_consul_on_cas_hosts | bool == true
         - inventory_hostname not in groups['consul']
     - foundation_service_action: "{{ service_action }}"
       foundation_service_name: "sas-{{ DEPLOYMENT_ID }}-consul-{{ INSTANCE_ID }}"
-      foundation_service_group: sas-casserver-primary
+      foundation_service_group: sas_casserver_primary
       role: foundation-service
       when:
         - sas_consul_on_cas_hosts | bool == true

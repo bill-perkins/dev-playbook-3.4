@@ -5,18 +5,18 @@ CLUSTER_DEFINITIONS:
 {% else %}
     default:
 {% endif %}
-{% if groups['sas-casserver-primary'] is defined and groups['sas-casserver-primary'] | length > 0 %}
-      primary_host: "{{ groups['sas-casserver-primary'][0] }}"
+{% if groups['sas_casserver_primary'] is defined and groups['sas_casserver_primary'] | length > 0 %}
+      primary_host: "{{ groups['sas_casserver_primary'][0] }}"
 {% else %}
       primary_host:
 {% endif %}
-{% if groups['sas-casserver-secondary'] is defined and groups['sas-casserver-secondary'] | length > 0 %}
-      secondary_host: "{{ groups['sas-casserver-secondary'][0] }}"
+{% if groups['sas_casserver_secondary'] is defined and groups['sas_casserver_secondary'] | length > 0 %}
+      secondary_host: "{{ groups['sas_casserver_secondary'][0] }}"
 {% else %}
       secondary_host:
 {% endif %}
-{% if groups['sas-casserver-worker'] | length > 0 %}
-      worker_hosts: "{% for host in groups['sas-casserver-worker'] %}{{ host }},{% endfor %}"
+{% if groups['sas_casserver_worker'] | length > 0 %}
+      worker_hosts: "{% for host in groups['sas_casserver_worker'] %}{{ host }},{% endfor %}"
 {% else %}
       worker_hosts:
 {% endif %}

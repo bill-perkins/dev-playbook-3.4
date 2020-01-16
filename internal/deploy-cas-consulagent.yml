@@ -1,7 +1,7 @@
 ---
 - name: deploy-cas-consulagent
   become_user: '{{ INSTALL_USER }}'
-  hosts: sas-casserver-primary:sas-casserver-secondary:sas-casserver-worker:!consul
+  hosts: sas_casserver_primary:sas_casserver_secondary:sas_casserver_worker:!consul
   any_errors_fatal: true
   pre_tasks:
     - name: Install sas-consul
@@ -59,7 +59,7 @@
 
 - name: Configure localconsul on CAS hosts
   become_user: '{{ INSTALL_USER }}'
-  hosts: sas-casserver-primary:sas-casserver-secondary:sas-casserver-worker:!consul
+  hosts: sas_casserver_primary:sas_casserver_secondary:sas_casserver_worker:!consul
   any_errors_fatal: true
   pre_tasks:
   - name: include soe.yml
@@ -79,7 +79,7 @@
 
 - name: Set the consul url on cas hosts to point to localhost
   become_user: '{{ INSTALL_USER }}'
-  hosts: sas-casserver-primary:sas-casserver-secondary:sas-casserver-worker
+  hosts: sas_casserver_primary:sas_casserver_secondary:sas_casserver_worker
   any_errors_fatal: true
   vars_files:
   - ../vars.yml

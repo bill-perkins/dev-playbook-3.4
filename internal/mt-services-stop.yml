@@ -2,7 +2,7 @@
 # file: mt-services-stop.yml
 
 - name: Stop all services that are owned by the tenant
-  hosts: ComputeServer:sas-casserver-*:programming
+  hosts: ComputeServer:sas_casserver_*:programming
   any_errors_fatal: true
   gather_facts: false
   become: false

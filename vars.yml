@@ -176,7 +176,7 @@ casenv_group: sas
 #   The cfg section will create a cas.variable in the file
 #     Example: cas.port = 5570
 #
-# If you have defined hosts for the sas-casserver-worker then the MODE will
+# If you have defined hosts for the sas_casserver_worker then the MODE will
 # automatically be set to 'mpp'. If the environment variables HADOOP_HOME and 
 # HADOOP_NAMENODE are set, the COLOCATION option will automatically equal 'hdfs'.
 # If HADOOP_HOME and HADOOP_NAMENODE are not set, then the COLOCATION option 

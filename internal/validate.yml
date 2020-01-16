@@ -69,8 +69,8 @@
     when: check_register is defined and check_register.failed is defined and check_register.failed
   - name: Validate CAS controller host is defined when necessary
     fail:
-      msg: No CAS controller host found. Either define sasenv_cas_host in vars.yml or assign a machine to the sas-casserver-primary group.
-    failed_when: (groups['programming'] is defined and groups['programming'] | length > 0) and not ((sasenv_cas_host is defined and sasenv_cas_host) or (groups['sas-casserver-primary'] is defined and groups['sas-casserver-primary'] | length > 0))
+      msg: No CAS controller host found. Either define sasenv_cas_host in vars.yml or assign a machine to the sas_casserver_primary group.
+    failed_when: (groups['programming'] is defined and groups['programming'] | length > 0) and not ((sasenv_cas_host is defined and sasenv_cas_host) or (groups['sas_casserver_primary'] is defined and groups['sas_casserver_primary'] | length > 0))
     ignore_errors: true
     register: check_register
   - name: Accumulate any failure results
@@ -183,7 +183,7 @@
 
 - name: Validate existence of cas user, group membership, and the consistency of IDs
   any_errors_fatal: true
-  hosts: sas-casserver-*
+  hosts: sas_casserver_*
   pre_tasks:
   - include: ../tasks/create_cas_cluster_defs.yml
   tasks:
@@ -192,7 +192,7 @@
       FAIL_ON_USER_CHECK: true
       GROUP_TO_CHECK: '{{ item.value.casenv_group | default(INSTALL_GROUP) }}'
       USER_TO_CHECK: '{{ item.value.casenv_user | default(''cas'') }}'
-    when: (    (    item.value.primary_host is defined     and inventory_hostname == item.value.primary_host    ) or (    item.value.primary_host is not defined     and inventory_hostname == groups['sas-casserver-primary'] | default([]) | first    )) or (    (    item.value.secondary_host is defined     and inventory_hostname == item.value.secondary_host    ) or (    item.value.secondary_host is not defined     and inventory_hostname == groups['sas-casserver-secondary'] | default([]) | first    )) or (    (    item.value.worker_hosts is defined     and item.value.worker_hosts     and inventory_hostname in item.value.worker_hosts.split(',')    ) or (    item.value.worker_hosts is not defined     and inventory_hostname in groups['sas-casserver-worker'] | default([])    ))
+    when: (    (    item.value.primary_host is defined     and inventory_hostname == item.value.primary_host    ) or (    item.value.primary_host is not defined     and inventory_hostname == groups['sas_casserver_primary'] | default([]) | first    )) or (    (    item.value.secondary_host is defined     and inventory_hostname == item.value.secondary_host    ) or (    item.value.secondary_host is not defined     and inventory_hostname == groups['sas_casserver_secondary'] | default([]) | first    )) or (    (    item.value.worker_hosts is defined     and item.value.worker_hosts     and inventory_hostname in item.value.worker_hosts.split(',')    ) or (    item.value.worker_hosts is not defined     and inventory_hostname in groups['sas_casserver_worker'] | default([])    ))
     with_dict: '{{ CLUSTER_DEFINITIONS_cas | default({}) }}'
   - include: ../tasks/cas_check_id_consistency.yml
     loop_control:
@@ -201,14 +201,14 @@
       GROUP_TO_CHECK: '{{ cluster_definiton.value.casenv_group | default(INSTALL_GROUP)
         }}'
       USER_TO_CHECK: '{{ cluster_definiton.value.casenv_user | default(''cas'') }}'
-    when: (    (    cluster_definiton.value.primary_host is defined     and inventory_hostname == cluster_definiton.value.primary_host    ) or (    cluster_definiton.value.primary_host is not defined     and inventory_hostname == groups['sas-casserver-primary'] | default([]) | first    )) or (    (    cluster_definiton.value.secondary_host is defined     and inventory_hostname == cluster_definiton.value.secondary_host    ) or (    cluster_definiton.value.secondary_host is not defined     and inventory_hostname == groups['sas-casserver-secondary'] | default([]) | first    )) or (    (    cluster_definiton.value.worker_hosts is defined     and cluster_definiton.value.worker_hosts     and inventory_hostname in cluster_definiton.value.worker_hosts.split(',')    ) or (    cluster_definiton.value.worker_hosts is not defined     and inventory_hostname in groups['sas-casserver-worker'] | default([])    ))
+    when: (    (    cluster_definiton.value.primary_host is defined     and inventory_hostname == cluster_definiton.value.primary_host    ) or (    cluster_definiton.value.primary_host is not defined     and inventory_hostname == groups['sas_casserver_primary'] | default([]) | first    )) or (    (    cluster_definiton.value.secondary_host is defined     and inventory_hostname == cluster_definiton.value.secondary_host    ) or (    cluster_definiton.value.secondary_host is not defined     and inventory_hostname == groups['sas_casserver_secondary'] | default([]) | first    )) or (    (    cluster_definiton.value.worker_hosts is defined     and cluster_definiton.value.worker_hosts     and inventory_hostname in cluster_definiton.value.worker_hosts.split(',')    ) or (    cluster_definiton.value.worker_hosts is not defined     and inventory_hostname in groups['sas_casserver_worker'] | default([])    ))
     with_dict: '{{ CLUSTER_DEFINITIONS_cas | default({}) }}'
   vars_files:
   - ../vars.yml
 
 - name: Validate CAS Admin User and cas_provlist
   any_errors_fatal: true
-  hosts: sas-casserver-*
+  hosts: sas_casserver_*
   roles:
   - casserver-validate
   vars_files:

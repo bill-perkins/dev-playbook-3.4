@@ -2,7 +2,7 @@
 # file: mt-backupagent.yml
 
 - name: "Make sure the backupagent is started"
-  hosts: sas-casserver-primary
+  hosts: sas_casserver_primary
   any_errors_fatal: true
   gather_facts: false
   become: false

@@ -10,5 +10,5 @@
     - ../vars.yml
 
   roles:
-    - { role: tls_password_ecosystem, COMBINED_GROUP: '{{ groups[''sas-casserver-primary''] + groups[''sas-casserver-secondary''] + groups[''sas-casserver-worker''] }}' }
+    - { role: tls_password_ecosystem, COMBINED_GROUP: '{{ groups[''sas_casserver_primary''] + groups[''sas_casserver_secondary''] + groups[''sas_casserver_worker''] }}' }
 ...
