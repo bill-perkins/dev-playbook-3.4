@@ -6,3 +6,5 @@ deployment.log.*
 snapshot
 viya_deployment_report*
 to-be-fixed
+deployment.log
+inventory.ini.*
