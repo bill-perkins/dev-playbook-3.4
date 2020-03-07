@@ -3,7 +3,7 @@ CLUSTER_DEFINITIONS:
     default:
       primary_host: "controller1"
       secondary_host: "controller2"
-      worker_hosts: "worker1,worker2,worker3,"
+      worker_hosts: "worker1,worker2,"
       tenant: shared
       casenv_user: cas
       casenv_group: sas
