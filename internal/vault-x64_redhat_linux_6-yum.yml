@@ -16,7 +16,7 @@
 
 - name: Distribute TLS Certificate
   any_errors_fatal: true
-  hosts: sas-all
+  hosts: sas_all
   tasks:
   - include: ../tasks/distribute-certificate.yml
     vars:
@@ -29,7 +29,7 @@
 
 - name: Rebuild SAS trust stores
   any_errors_fatal: true
-  hosts: sas-all
+  hosts: sas_all
   tasks:
   - include: ../tasks/rebuild-trust-stores.yml
     vars:

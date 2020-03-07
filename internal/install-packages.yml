@@ -1,6 +1,6 @@
 ---
 - name: Include package install tasks
-  hosts: "{{ install_hosts | default('sas-all') }}"
+  hosts: "{{ install_hosts | default('sas_all') }}"
   any_errors_fatal: true
   become_user: root
   vars_files:

@@ -82,7 +82,7 @@
 
 - name: Validate hosts
   any_errors_fatal: true
-  hosts: sas-all
+  hosts: sas_all
   tasks:
   - set_fact:
       all_results: []
@@ -100,8 +100,8 @@
     when: check_register is defined and check_register.failed is defined and check_register.failed
   - name: Perform host connection checks
     host_connection_check:
-      host_list: '{{ hostvars | to_fqdn_list(groups, ''sas-all'') | union( hostvars
-        | to_ipv4_list(groups, ''sas-all'') ) | union( [ sas_vars.self_deployment_ipv4
+      host_list: '{{ hostvars | to_fqdn_list(groups, ''sas_all'') | union( hostvars
+        | to_ipv4_list(groups, ''sas_all'') ) | union( [ sas_vars.self_deployment_ipv4
         ] ) }}'
     ignore_errors: true
     register: host_connection_register
@@ -140,7 +140,7 @@
 
 - name: Summarize pre-flight check status
   any_errors_fatal: true
-  hosts: sas-all,localhost
+  hosts: sas_all,localhost
   tasks:
   - name: Identify any pre-flight check failures
     fail:
@@ -153,7 +153,7 @@
 
 - name: Check user accounts required by the playbook
   any_errors_fatal: true
-  hosts: sas-all
+  hosts: sas_all
   tasks:
   - include: ../tasks/check_user.yml
     vars:
@@ -163,7 +163,7 @@
 
 - name: Check for unsupported tags
   any_errors_fatal: true
-  hosts: sas-all
+  hosts: sas_all
   tasks:
   - name: Check if any tags are in scope
     set_fact:

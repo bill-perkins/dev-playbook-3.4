@@ -2,7 +2,7 @@
 # Lifecycle playbook
 
 - name: Lifecycle
-  hosts: sas-all[0]
+  hosts: sas_all[0]
   become_user: '{{ INSTALL_USER }}'
   any_errors_fatal: true
   vars_files:

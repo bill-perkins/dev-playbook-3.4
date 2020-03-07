@@ -2,7 +2,7 @@
 # file: deploy-cascerts.yml
 
 - name: Deploy CAS TLS certs across all hosts
-  hosts: sas-all
+  hosts: sas_all
   any_errors_fatal: true
   become: no
 

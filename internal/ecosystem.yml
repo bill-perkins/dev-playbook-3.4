@@ -1,7 +1,7 @@
 ---
 - name: ecosystem
   any_errors_fatal: true
-  hosts: sas-all
+  hosts: sas_all
   roles:
   - APP_NAME: consul
     COMBINED_GROUP: '{{ groups[''consul''] }}'
@@ -12,13 +12,13 @@
   - APP_NAME: consul
     COMBINED_GROUP: '{{ groups[''consul''] }}'
     MODE: '0640'
-    SCOPE_GROUP: '{{ groups[''sas-all''] }}'
+    SCOPE_GROUP: '{{ groups[''sas_all''] }}'
     TOKEN_NAME: client.token
     role: uuid_token_ecosystem
   - APP_NAME: consul
     COMBINED_GROUP: '{{ groups[''consul''] }}'
     MODE: '0600'
-    SCOPE_GROUP: '{{ groups[''sas-all''] }}'
+    SCOPE_GROUP: '{{ groups[''sas_all''] }}'
     TOKEN_NAME: encryption.token
     role: consulEncryption_token_ecosystem
   - COMBINED_GROUP: '{{ groups[''pgpoolc''] }}'

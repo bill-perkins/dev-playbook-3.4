@@ -2,7 +2,7 @@
 # Verify host specification play
 
 - name: Verify host specification
-  hosts: sas-all
+  hosts: sas_all
 
   become_user: "{{ INSTALL_USER }}"
 

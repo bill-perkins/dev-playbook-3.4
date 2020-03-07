@@ -1,5 +1,5 @@
 - name: Ensure install user exists and is set up properly
-  hosts: sas-all
+  hosts: sas_all
   any_errors_fatal: true
 
   become_user: "{{ INSTALL_USER }}"

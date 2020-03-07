@@ -16,7 +16,7 @@ def get_available_disk_space_on_system(path):
 
 #==
 def get_group_names(group_names_list):
-    ignored_groups = ["sas-all", "ungrouped"]
+    ignored_groups = ["sas_all", "ungrouped"]
     for group in ignored_groups:
         if group in group_names_list:
             group_names_list.remove(group)

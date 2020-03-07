@@ -46,9 +46,9 @@ def add_hostname_fqdn(facts, key, failure_msgs):
 
 def get_sas_host_group_variable_entries(host_variables):
     magic_prefix = "sas_host_group_variables_"
-    sas_all_key = magic_prefix + "sas-all"
+    sas_all_key = magic_prefix + "sas_all"
 
-    # The sas-all entry is relevant only when there is some
+    # The sas_all entry is relevant only when there is some
     # other entry present for the host.  This approach
     # mimics having a host included/excluded through the
     # inventory.

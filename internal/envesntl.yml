@@ -1,7 +1,7 @@
 ---
 - name: envesntl
   become_user: '{{ INSTALL_USER }}'
-  hosts: sas-all
+  hosts: sas_all
   any_errors_fatal: true
   vars_files:
   - ../vars.yml

@@ -2,7 +2,7 @@
 # file: validate-license.yml
 
 - name: Verify that license is valid
-  hosts: sas-all
+  hosts: sas_all
   any_errors_fatal: true
   gather_facts: no
   become: no

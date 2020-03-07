@@ -2,7 +2,7 @@
 # file: post-deployment.yml
 
 - name: Post deployment
-  hosts: sas-all
+  hosts: sas_all
   any_errors_fatal: true
   become: no
 

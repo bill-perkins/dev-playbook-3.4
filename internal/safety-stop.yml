@@ -1,6 +1,6 @@
 ---
 - name: Safety stop - Check for additional packages that represent services that should be stopped
-  hosts: sas-all
+  hosts: sas_all
   any_errors_fatal: true
   tasks:
     - name: Get updated sas package data

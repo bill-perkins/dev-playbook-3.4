@@ -2,7 +2,7 @@
 - include: "{{ playbook_dir }}/../internal/gather-host-facts.yml"
 
 - name: Distribute HTTPD Certificates
-  hosts: sas-all
+  hosts: sas_all
   any_errors_fatal: true
   tasks:
   - include: "{{ playbook_dir }}/../tasks/distribute-certificate.yml"
@@ -14,7 +14,7 @@
   - ../vars.yml
 
 - name: Rebuild SAS trust stores
-  hosts: sas-all
+  hosts: sas_all
   tasks:
   - include: "{{ playbook_dir }}/../tasks/rebuild-trust-stores.yml"
     vars:

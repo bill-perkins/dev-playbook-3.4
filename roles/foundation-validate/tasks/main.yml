@@ -9,7 +9,7 @@
 
 - name: Set CAS host
   set_fact:
-    controller_host: "{% if sasenv_cas_host is defined and sasenv_cas_host %}{{ sasenv_cas_host }}{%   elif groups['sas-casserver-primary'] | length > 0 %}{{ hostvars[groups['sas-casserver-primary'][0]]['sas_vars']['hostname_fqdn'] }}{%   else %}&SYSTCPIPHOSTNAME{%   endif %}"
+    controller_host: "{% if sasenv_cas_host is defined and sasenv_cas_host %}{{ sasenv_cas_host }}{%   elif groups['sas_casserver_primary'] | length > 0 %}{{ hostvars[groups['sas_casserver_primary'][0]]['sas_vars']['hostname_fqdn'] }}{%   else %}&SYSTCPIPHOSTNAME{%   endif %}"
 
 - name: Assert that controller host is set
   fail:

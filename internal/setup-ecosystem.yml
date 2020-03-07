@@ -30,14 +30,14 @@
     - name: Insert remote hosts into known_hosts
       shell: ssh-keygen -f {{ lookup('env','HOME') }}/.ssh/known_hosts -R {{ hostvars[item].sas_vars.hostname_fqdn }}; ssh-keyscan {{ hostvars[item].sas_vars.hostname_fqdn }} >> {{ lookup('env','HOME') }}/.ssh/known_hosts
       with_items:
-        - "{{ groups['sas-all'] }}"
+        - "{{ groups['sas_all'] }}"
       run_once: yes
 
 ###########################################################
 # A set of tasks specific to the hosts we are connecting to
 ###########################################################
 - name: Install additional packages
-  hosts: sas-all
+  hosts: sas_all
   any_errors_fatal: true
   gather_facts: no
   become: no

@@ -2,7 +2,7 @@
 # file: validate-java.yml
 
 - name: Verify that Java is properly installed
-  hosts: sas-all
+  hosts: sas_all
   any_errors_fatal: true
   become: no
 
