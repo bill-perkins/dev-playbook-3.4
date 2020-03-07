@@ -15,7 +15,7 @@ def check_key(key, dictionary, dictionaryName, host):
     raise errors.AnsibleFilterError(err_msg)
     return False
     
-def to_ipv4_list(host_vars, groups, target = 'sas-all'):
+def to_ipv4_list(host_vars, groups, target = 'sas_all'):
     if type(host_vars) != HostVars:
         raise errors.AnsibleFilterError("failed expects a HostVars")
 
