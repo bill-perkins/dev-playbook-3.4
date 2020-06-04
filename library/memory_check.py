@@ -25,7 +25,7 @@ def get_inactive_services(hostvars, services, pattern):
     return inactive_services
 
 def get_group_names(group_names_list):
-    ignored_groups = ["sas_all", "ungrouped"]
+    ignored_groups = ["sas-all", "ungrouped"]
     for group in ignored_groups:
         if group in group_names_list:
             group_names_list.remove(group)
